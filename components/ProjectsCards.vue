@@ -1,22 +1,22 @@
 <template>
-  <v-card class="mx-auto" max-width="344">
-    <v-img src="/avatar.jpg" height="200px" alt="Marcelo Mendonca" />
+  <v-card class="mx-auto my-2" max-width="300">
+    <v-img src="/bar_chart.svg" height="150px" alt="Bar Chart" />
 
     <v-card-title>
-      Top western road trips
+      Project Name
     </v-card-title>
 
     <v-card-subtitle>
-      1,000 miles of wonder
+      Technology used
     </v-card-subtitle>
 
     <v-card-actions>
       <v-btn text>
-        Share
+        Learn More
       </v-btn>
 
-      <v-btn color="purple" text>
-        Explore
+      <v-btn color="pink" text>
+        Live Demo
       </v-btn>
 
       <v-spacer />

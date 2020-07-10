@@ -2,9 +2,10 @@
   <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
+      class="hidden-md-and-up"
       :mini-variant="miniVariant"
       :clipped="clipped"
-      fixed
+      temporary
       app
     >
       <v-list>
@@ -26,20 +27,56 @@
     </v-navigation-drawer>
 
     <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-app-bar-nav-icon
+        class="hidden-md-and-up"
+        @click.stop="drawer = !drawer"
+      />
+      <img id="app-bar-avatar" src="/avatar.jpg" alt="Marcelo Mendonca" />
+
+      <v-toolbar-title
+        class="pl-3 font-weight-light text-body-2 text-sm-h5"
+        v-text="firstName"
+      />
+      <v-toolbar-title
+        class="pl-1 pink--text text-body-2 text-sm-h5"
+        v-text="surName"
+      />
+
       <v-spacer />
-      <v-switch v-model="$vuetify.theme.dark" hide-details inset label="Dark" />
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn nuxt text to="/" active-class="pink--text headline">
+          Home
+        </v-btn>
+        <v-btn nuxt text to="/resume" active-class="pink--text headline">
+          Resume
+        </v-btn>
+        <!-- <v-btn nuxt text to="/services" active-class="blue--text headline">Services</v-btn> -->
+        <v-btn nuxt text to="/portfolio" active-class="pink--text headline">
+          Portfolio
+        </v-btn>
+        <!-- <v-btn nuxt text to="/blog" active-class="blue--text headline">Blog</v-btn> -->
+        <v-btn nuxt text to="/contact" active-class="pink--text headline">
+          Contact
+        </v-btn>
+      </v-toolbar-items>
+      <v-switch
+        v-model="$vuetify.theme.dark"
+        class="ml-4"
+        hide-details
+        flat
+        color="pink"
+        label="Dark"
+      />
     </v-app-bar>
 
     <v-main>
-      <v-container>
+      <v-container mx-auto class="align-content-center">
         <nuxt />
       </v-container>
     </v-main>
 
     <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>Marcelo Mendonca &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
@@ -57,15 +94,18 @@ export default {
           title: 'Home',
           to: '/',
         },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
-        },
       ],
       miniVariant: false,
-      title: 'Marcelo Mendonca',
+      firstName: 'Marcelo',
+      surName: 'Mendonca',
     }
   },
 }
 </script>
+
+<style>
+#app-bar-avatar {
+  max-width: 40px;
+  border-radius: 50%;
+}
+</style>
